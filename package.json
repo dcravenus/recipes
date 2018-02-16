@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-markdown": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "markdown-it": "^8.4.1",
+    "markdown-it-front-matter": "^0.1.2"
+  }
+}
