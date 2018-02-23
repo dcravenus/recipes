@@ -1,7 +1,7 @@
 body {
   display: grid;
   grid-template-rows: 1fr min-content;
-  height: 90vh;
+  height: 70vh;
   padding: 0;
 }
 
