@@ -22,7 +22,7 @@ gulp.task('frontMatter', ['recipes'], (done) => {
     const frontMatter = JSON.parse(data);
     let html = '<link rel="stylesheet" href="modest.css">';
     frontMatter.forEach((item)=>{
-      html = html + `<p><a href="${item.filename}">${item.title}</a></p>`;
+      html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
     });
     fs.writeFile("dist/index.html", html, () => {
       fs.unlink("dist/front-matter.json", done)
