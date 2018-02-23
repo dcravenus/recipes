@@ -1,1 +1,1 @@
-body{display:grid;grid-template-rows:1fr min-content;height:100vh;padding:0}main{overflow:scroll}footer{padding:20px;background-color:#3498db}footer input{width:100%}
+body{display:grid;grid-template-rows:1fr min-content;height:100vh;padding:0}main{overflow:scroll}footer{padding:20px;background-color:#3498db}footer input{width:100%;font-size:2rem}
