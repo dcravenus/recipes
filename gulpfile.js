@@ -9,13 +9,18 @@ const through = require('through2');
 const fs = require('fs');
 const path = require('path');
 
+const critical = require('critical').stream;
+const cleanCSS = require('gulp-clean-css');
 
-gulp.task('default', ['frontMatter']);
+const htmlmin = require('gulp-htmlmin');
+
+
+gulp.task('default', ['htmlmin']);
 
 gulp.task('frontMatter', ['recipes'], (done) => {
   fs.readFile("dist/front-matter.json", function(err, data){
     const frontMatter = JSON.parse(data);
-    let html = '';
+    let html = '<link rel="stylesheet" href="modest.css">';
     frontMatter.forEach((item)=>{
       html = html + `<p><a href="${item.filename}">${item.title}</a></p>`;
     });
@@ -40,7 +45,10 @@ gulp.task('recipes', (done) => {
         frontMatter.push(fm);
       });
 
-      file.contents = new Buffer(md.render(file.contents.toString()));
+      let recipeHTML = md.render(file.contents.toString());
+      recipeHTML = '<link rel="stylesheet" href="modest.css">' + recipeHTML;
+
+      file.contents = new Buffer(recipeHTML);
       cb(null, file);
     }))
     .pipe(rename({
@@ -51,4 +59,28 @@ gulp.task('recipes', (done) => {
   stream.on('end', function(){
     fs.writeFile("dist/front-matter.json", JSON.stringify(frontMatter), done);
   });
-})
+});
+
+gulp.task('css', () => {
+  return gulp.src('node_modules/markdown-modest/css/modest.css')
+      .pipe(cleanCSS())
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('critical', ['frontMatter', 'css'], () => {
+  return gulp.src('dist/*.html')
+      .pipe(critical({
+        base: 'dist/',
+        inline: true,
+        css: ['dist/modest.css']
+      }))
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('htmlmin', ['critical'], () => {
+  return gulp.src('dist/*.html')
+      .pipe(htmlmin({
+        collapseWhitespace: true
+      }))
+      .pipe(gulp.dest('dist'));
+});

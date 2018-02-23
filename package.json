@@ -5,5 +5,11 @@
     "gulp-rename": "^1.2.2",
     "markdown-it": "^8.4.1",
     "markdown-it-front-matter": "^0.1.2"
+  },
+  "dependencies": {
+    "critical": "^1.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-htmlmin": "^4.0.0",
+    "markdown-modest": "markdowncss/modest"
   }
 }
