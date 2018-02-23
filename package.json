@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "critical": "^1.1.0",
+    "gulp-add-src": "^0.2.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-htmlmin": "^4.0.0",
     "markdown-modest": "markdowncss/modest"
