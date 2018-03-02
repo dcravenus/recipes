@@ -22,11 +22,11 @@ gulp.task('default', ['htmlmin', 'js']);
 gulp.task('frontMatter', ['recipes'], (done) => {
   fs.readFile("dist/front-matter.json", function(err, data){
     const frontMatter = JSON.parse(data);
-    let html = '<link rel="stylesheet" href="modest.css"><link rel="stylesheet" href="main.css"><main>';
+    let html = '<link rel="stylesheet" href="main.css"><header><input type="text" style="display:none;"></header><main>';
     frontMatter.forEach((item)=>{
       html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
     });
-    html = html + '</main><footer><input type="text" style="display:none;"><script src="main.js"></script></footer>';
+    html = html + '</main><script src="main.js"></script>';
     fs.writeFile("dist/index.html", html, () => {
       fs.unlink("dist/front-matter.json", done)
     });
