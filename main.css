@@ -1,20 +1,9 @@
-body {
-  display: grid;
-  grid-template-rows: 1fr min-content;
-  height: 90vh;
-  padding: 0;
-}
-
-main {
-  overflow: scroll;
-}
-
-footer {
+header {
   padding: 20px;
   background-color: #3498db;
 }
 
-footer input {
+header input {
   width: 100%;
   font-size: 2rem;
 }
