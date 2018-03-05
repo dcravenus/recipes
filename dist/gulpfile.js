@@ -27,6 +27,15 @@ gulp.task('frontMatter', ['recipes'], (done) => {
       html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
     });
     html = html + '</main><script src="main.js"></script>';
+    html = html + `
+      <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker
+                   .register('/sw.js')
+                   .then(function() { console.log("Service Worker Registered"); });
+        }
+        </script>
+    `;
     fs.writeFile("dist/index.html", html, () => {
       fs.unlink("dist/front-matter.json", done)
     });
