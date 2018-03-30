@@ -85,7 +85,7 @@ gulp.task('js', () => {
              .pipe(gulp.dest('dist'));
 });
 
-gulp.task('critical', ['frontMatter', 'css'], () => {
+gulp.task('critical', ['frontMatter', 'css', '404'], () => {
   return gulp.src('dist/*.html')
       .pipe(critical({
         base: 'dist/',
@@ -101,4 +101,9 @@ gulp.task('htmlmin', ['critical'], () => {
         collapseWhitespace: true
       }))
       .pipe(gulp.dest('dist'));
+});
+
+gulp.task('404', () => {
+  return gulp.src('404.html')
+             .pipe(gulp.dest('dist'));
 });
