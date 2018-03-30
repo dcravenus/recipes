@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const rename = require('gulp-rename');
-//const markdown = require('gulp-markdown');
 
 const markdownIt = require('markdown-it');
 const markdownItFrontMatter = require('markdown-it-front-matter');
@@ -16,6 +15,8 @@ const htmlmin = require('gulp-htmlmin');
 
 const addsrc = require('gulp-add-src');
 
+const postcss = require('gulp-postcss');
+const cssDeclarationSorter = require('css-declaration-sorter');
 
 gulp.task('default', ['htmlmin', 'js']);
 
@@ -73,7 +74,13 @@ gulp.task('recipes', (done) => {
   });
 });
 
-gulp.task('css', () => {
+gulp.task('prettifycss', () => {
+  return gulp.src('main.css')
+            .pipe(postcss([cssDeclarationSorter]))
+            .pipe(gulp.dest('./'));
+});
+
+gulp.task('css', ['prettifycss'], () => {
   return gulp.src('node_modules/markdown-modest/css/modest.css')
       .pipe(addsrc('main.css'))
       .pipe(cleanCSS())
