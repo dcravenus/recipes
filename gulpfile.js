@@ -13,8 +13,6 @@ const cleanCSS = require('gulp-clean-css');
 
 const htmlmin = require('gulp-htmlmin');
 
-const addsrc = require('gulp-add-src');
-
 const postcss = require('gulp-postcss');
 const cssDeclarationSorter = require('css-declaration-sorter');
 
@@ -28,6 +26,8 @@ gulp.task('frontMatter', ['recipes'], (done) => {
       html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
     });
     html = html + '</main><script src="main.js"></script>';
+
+    /*
     html = html + `
       <script>
         if('serviceWorker' in navigator) {
@@ -37,6 +37,7 @@ gulp.task('frontMatter', ['recipes'], (done) => {
         }
         </script>
     `;
+    */
     fs.writeFile("dist/index.html", html, () => {
       fs.unlink("dist/front-matter.json", done)
     });
@@ -59,7 +60,7 @@ gulp.task('recipes', (done) => {
       });
 
       let recipeHTML = md.render(file.contents.toString());
-      recipeHTML = '<link rel="stylesheet" href="modest.css">' + recipeHTML;
+      recipeHTML = '<link rel="stylesheet" href="recipe.css">' + recipeHTML;
 
       file.contents = new Buffer(recipeHTML);
       cb(null, file);
@@ -75,14 +76,13 @@ gulp.task('recipes', (done) => {
 });
 
 gulp.task('prettifycss', () => {
-  return gulp.src('main.css')
+  return gulp.src('*.css')
             .pipe(postcss([cssDeclarationSorter]))
             .pipe(gulp.dest('./'));
 });
 
 gulp.task('css', ['prettifycss'], () => {
-  return gulp.src('node_modules/markdown-modest/css/modest.css')
-      .pipe(addsrc('main.css'))
+  return gulp.src('*.css')
       .pipe(cleanCSS())
       .pipe(gulp.dest('dist'));
 });
