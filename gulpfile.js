@@ -21,23 +21,19 @@ gulp.task('default', ['htmlmin', 'js']);
 gulp.task('frontMatter', ['recipes'], (done) => {
   fs.readFile("dist/front-matter.json", function(err, data){
     const frontMatter = JSON.parse(data);
-    let html = '<link rel="stylesheet" href="main.css"><header><input type="text" style="display:none;"></header><main>';
+    let html = `
+      <link rel="stylesheet" href="main.css">
+      <header>
+        <label for="recipe-filter">Filter Recipes</label>
+        <input id="recipe-filter" type="text" style="display:none;">
+      </header>
+      <main>
+    `;
     frontMatter.forEach((item)=>{
       html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
     });
     html = html + '</main><script src="main.js"></script>';
 
-    /*
-    html = html + `
-      <script>
-        if('serviceWorker' in navigator) {
-          navigator.serviceWorker
-                   .register('/sw.js')
-                   .then(function() { console.log("Service Worker Registered"); });
-        }
-        </script>
-    `;
-    */
     fs.writeFile("dist/index.html", html, () => {
       fs.unlink("dist/front-matter.json", done)
     });
