@@ -1,6 +1,10 @@
 ---
 {
-  "title": "King Arthur Flour's Original Cake Pan Cake"
+  "title": "King Arthur Flour's Original Cake Pan Cake",
+  "tags": [
+    "cooked",
+    "dessert"
+  ]
 }
 ---
 

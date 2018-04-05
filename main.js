@@ -1,5 +1,5 @@
 const input = document.querySelector('input');
-const recipes = document.querySelectorAll('h3');
+const recipes = document.querySelectorAll('div.recipe');
 
 input.addEventListener('input', ()=>{
   const query = input.value;
@@ -13,3 +13,17 @@ input.addEventListener('input', ()=>{
   });
 });
 input.style.display = "inline-block";
+
+console.log(tags);
+Object.keys(tags).forEach((tagKey)=>{
+  const tagNode = document.createElement('div');
+  tagNode.appendChild(document.createTextNode(tagKey));
+
+  tags[tagKey].forEach((recipe)=>{
+    document.getElementById(recipe).appendChild(tagNode.cloneNode(true));
+  })
+
+})
+recipes.forEach((recipe)=>{
+
+});

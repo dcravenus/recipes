@@ -1,6 +1,10 @@
 ---
 {
-  "title": "Yellow Butter Cake"
+  "title": "Yellow Butter Cake",
+  "tags": [
+    "cooked",
+    "dessert"
+  ]
 }
 ---
 

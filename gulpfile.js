@@ -21,6 +21,15 @@ gulp.task('default', ['htmlmin', 'js']);
 gulp.task('frontMatter', ['recipes'], (done) => {
   fs.readFile("dist/front-matter.json", function(err, data){
     const frontMatter = JSON.parse(data);
+    const tags = frontMatter.reduce((tags, item)=>{
+      if(item.tags) {
+        item.tags.forEach((tag)=>{
+          if(!tags[tag]) tags[tag] = [];
+          tags[tag].push(item.filename);
+        });
+      }
+      return tags;
+    },{});
     let html = `
       <link rel="stylesheet" href="main.css">
       <header>
@@ -30,8 +39,13 @@ gulp.task('frontMatter', ['recipes'], (done) => {
       <main>
     `;
     frontMatter.forEach((item)=>{
-      html = html + `<h3><a href="${item.filename}">${item.title}</a></h3>`;
+      html = html + `<div class="recipe" id="${item.filename}"><h3><a href="${item.filename}">${item.title}</a></h3></div>`;
     });
+    html = html + `
+      <script>
+        const tags = ${JSON.stringify(tags)}
+      </script>
+    `;
     html = html + '</main><script src="main.js"></script>';
 
     fs.writeFile("dist/index.html", html, () => {

@@ -1,6 +1,10 @@
 ---
 {
-  "title": "Slow-Cooker Taiwanese Beef Noodle Soup"
+  "title": "Slow-Cooker Taiwanese Beef Noodle Soup",
+  "tags": [
+    "cooked",
+    "slow-cooker"
+  ]
 }
 ---
 
