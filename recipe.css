@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+ol li {
+  line-height: 2rem;
+}
+
+ul li {
+  font-family: sans-serif;
+  line-height: 2rem;
+  list-style-type: none;
+}
+
+h1 {
+  font-family: Futura, Arial, sans-serif;
+}
