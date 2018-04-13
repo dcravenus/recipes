@@ -1,4 +1,6 @@
 body {
+  background-color: #fdf6e3;
+  color: #657b83;
   font-family: Arial, sans-serif;
 }
 
@@ -15,3 +17,8 @@ ul li {
 h1 {
   font-family: Futura, Arial, sans-serif;
 }
+
+a {
+  color: #b58900;
+}
+
