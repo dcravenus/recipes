@@ -19,9 +19,13 @@
 - 1 teaspoon grated carrots
 - 1 cup minced celery
 
-Mix all ingredients together. Spoon into greased 1 1/2-quart casserole. Bake at 350° for one hour.
+Mix all ingredients together. Spoon into greased 1 1/2-quart casserole dish. Bake at 350° for one hour.
 
 #### To Cook Lentils
-1 cup dry lentils
-2 1/2 cups water
-Rinse lentils. Place in saucepan with water. Simmer for 30 minutes. Yield: about 2 1/2 cups cooked lentils.
+
+- 1 cup dry lentils
+- 2 1/2 cups water
+
+Rinse lentils. Place in saucepan with water. Simmer for 30 minutes.
+
+Yield: about 2 1/2 cups cooked lentils.
